@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-Pointer Networks
-@author: Yuxian Meng
-http://arxiv.org/abs/1506.03134
+An implementation of Pointer Networks http://arxiv.org/abs/1506.03134
 
+@author: Yuxian Meng
 """
 
 import numpy as np
@@ -19,13 +18,16 @@ def ptr_net(x, lengths, hidden_size, keep_prob, start_symbol):
         x: tensor of shape [batch_size, max_length, input_size]
         lengths: real length of x, tensor of shape [batch_size, ]
         hidden_size: hidden_size of RNN cell
+        keep_prob: keep probability of drop out layer, a float
+        start_symbol: a tensor representing start of induction of shape
+        [batch_size, input_size]
         
     Returns:
         tensor of shape [batch_size, input_size, max_length]
         
     """
     batch_size, max_len, input_size = [x.shape[i].value for i in range(3)]
-    init = tf.random_normal_initializer(0.0, 0.5)
+    init = tf.random_normal_initializer(0.0, 0.5)a
     
 
     # bi-RNN encoder
@@ -109,6 +111,7 @@ def ptr_net(x, lengths, hidden_size, keep_prob, start_symbol):
     return idx_distributions, ptr_outputs
 
 def batch_input(batch_size, input_size, max_length):
+    """test input"""
     return np.ones((batch_size, max_length, input_size)), np.ones((batch_size,)) * (max_length)
     
 
