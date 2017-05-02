@@ -1,3 +1,5 @@
 # pointer-network-tensorflow
 
-An implementation of <Pointer Networks>, http://arxiv.org/abs/1506.03134
+A TensorFlow implementation of [Pointer Networks](https://arxiv.org/abs/1506.03134).
+
+A little difference: Use bidirecitional LSTM as an encoder
